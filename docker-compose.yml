@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres
+    container_name: nestjs-boilerplate-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nestjs-boilerplate-db-dev, nestjs-boilerplate-db-test
+      PGDATA: /.data/postgres
+    volumes:
+      - postgres:/.data/postgres
+      - ./docker/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    ports:
+      - "5432:5432"
+    command: "-p 5432"
+    networks:
+      - postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: nestjs-boilerplate-pgadmin 
+    restart: always 
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com 
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin4 
+    ports: 
+      - '5050:80' 
+    networks: 
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:
