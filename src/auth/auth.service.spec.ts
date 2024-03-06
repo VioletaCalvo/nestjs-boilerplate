@@ -41,7 +41,7 @@ describe('AuthService', () => {
         password: 'password',
       };
       const mockedDbUser = {
-        id: 1,
+        id: 'uuid',
         email: userSignIn.email,
         hashedPassword: 'hashedPassword',
       };
@@ -63,7 +63,7 @@ describe('AuthService', () => {
         password: 'password',
       };
       const mockedDbUser = {
-        id: 1,
+        id: 'uuid',
         email: userSignIn.email,
         hashedPassword: 'hashedPassword',
       };

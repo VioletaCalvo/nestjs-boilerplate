@@ -31,7 +31,7 @@ describe('UsersController', () => {
         password: 'password',
       };
       const result = {
-        id: 1,
+        id: 'uuid',
         email: user.email,
       };
       jest.spyOn(service, 'create').mockImplementation(async () => result);

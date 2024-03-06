@@ -6,7 +6,7 @@ import { UsersService } from './users.service';
 import { ConfigService } from '@nestjs/config';
 import { UnprocessableEntityException } from '@nestjs/common';
 
-describe('UsersService', () => {
+describe('UserService', () => {
   let service: UsersService;
   let repository: Repository<User>;
 
@@ -36,7 +36,7 @@ describe('UsersService', () => {
         password: 'password',
       };
       const mockedDbUser = {
-        id: 1,
+        id: 'uuid',
         email: user.email,
         hashedPassword: 'hashedPassword',
       };
@@ -46,7 +46,7 @@ describe('UsersService', () => {
 
       const res = await service.create(user);
       const expectedResult = {
-        id: 1,
+        id: mockedDbUser.id,
         email: user.email,
       };
       expect(res).toEqual(expectedResult);
@@ -58,7 +58,7 @@ describe('UsersService', () => {
         password: 'password',
       };
       const mockedDbUser = {
-        id: 1,
+        id: 'uuid',
         email: user.email,
         hashedPassword: 'hashedPassword',
       };
@@ -77,7 +77,7 @@ describe('UsersService', () => {
     it('should find by email', async () => {
       const userEmail = 'user@test.com';
       const mockedDbUser = {
-        id: 1,
+        id: 'uuid',
         email: userEmail,
         hashedPassword: 'hashedPassword',
       };

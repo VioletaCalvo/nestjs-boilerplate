@@ -6,7 +6,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import TypeOrmConfig from './typeorm.config';
-import { JwtService } from '@nestjs/jwt';
 
 const isTestEnv = process.env.NODE_ENV === 'test';
 @Module({
